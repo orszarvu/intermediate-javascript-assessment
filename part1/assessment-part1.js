@@ -43,27 +43,27 @@ function daBears(){
 // Which function(s) access the "chair" variable and get "Too Big!"
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale1 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale1 = ["papaBear",  "mamaBear"];
 
 // Which function(s) access the "feeling" variable and get "Hungry"
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale2 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale2 = ["goldilocks"];
 
 // Which function(s) access the "porridge" variable and get "Too Cold!"
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale3 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale3 = ["mamaBear"];
 
 // Which function(s) access the "sleepy" variable and get undefined
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale4 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale4 = ["daBears", "papaBear", "mamaBear", "goldilocks"];
 
 // Which function(s) access the isFurry variable and get true
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear"];
 
 
 // *************
@@ -82,11 +82,20 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 // "charger" once, and invoke it twice on "mustang".
 
 // CODE HERE...
+function Vehicle(){
+  
+this.gasRemaining = 100
 
+}
+Vehicle.prototype.drive = function(){
+  this.gasRemaining -= 25
+}
+var mustang = new Vehicle()
+mustang.drive()
+mustang.drive()
 
-
-
-
+var charger = new Vehicle()
+charger.drive()
 // -----------------------------------------------------------------------------
 
 // *************
@@ -104,10 +113,40 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 // Your method may be passed punctuation, numbers or other non-letter characters
 // and should neither modify them nor break when encountering them.
 
+// String.prototype.grammarPolice = function(str){
+ 
+String.prototype.grammarPolice = function() {
+   var str = this.toLowerCase().split(' ');
+   for (var i = 0; i < str.length; i++) {
+     str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1); 
+   }
+   return str.join(' ');
+ }
+  
+// str.toLowerCase().split(' ');
+
+// for(var i = 0; i < str.length; i++){
+//   str[i] = str[i].split('');
+//  str[i][0] = str[i][0].toUpperCase();
+//   str[i] = str[i].join('');
+// }
+// str.join(' ')
+
+// }
 
 
 
-// CODE HERE...
+// String.prototype.grammarPolice = function(str){
+// str = str.toLowerCase().split(' ');
+
+// for(var i = 0; i < str.length; i++){
+//   str[i] = str[i].split('');
+//   str[i][0] = str[i][0].toUpperCase();
+//   str[i] = str[i].join('');
+// }
+// return str.join(' ')
+// }
+
 
 
 
@@ -126,7 +165,15 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 // In all other cases, return "Different values"
 
 // CODE HERE...
-
+function valueType(str, num){
+  if (typeof num === typeof str && str === num){
+    return "Exactly the same";
+  } else if(typeof num !== typeof str && str == num){
+    return "Same value, different types";
+  } else{
+    return "Different values"
+  }
+}
 
 
 // *************
@@ -137,7 +184,25 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 // Jasmine will pass a promise into your function through that parameter.
 // Your function will need to handle that promise.
 // When your promise receives its results, set variable 'theAnswer' (seen below) equal to the result.
+// function promiseCatcher(param){
+//   var theAnswer = param.catch(function(result){
+// return result
+//   }
+//   )
 
-var theAnswer = "Unknown";
 
-// CODE HERE...
+// function promiseCatcher(param){
+//   param.catch(function(results){
+//   var theAnswer = results;
+//   })
+
+//  }
+var theAnswer = "Unknown"
+function promiseCatcher(param){
+  param.then(function(response){
+    theAnswer = response;
+     return response;
+    
+   })
+    
+}
